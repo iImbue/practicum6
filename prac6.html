@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RecycLoop - CSS Positioning & Watermark (Prac 6)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f9f4;
+            min-height: 160vh; /* Enables scrolling to test sticky & fixed */
+        }
+
+        /* 1. STICKY POSITION */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            background-color: #1b4332;
+            color: white;
+            padding: 15px 30px;
+            z-index: 500;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* 2. WATERMARK WITH OPACITY (Fixed behind content) */
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-25deg);
+            font-size: 6rem;
+            font-weight: 900;
+            color: #2d6a4f;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1;
+            white-space: nowrap;
+        }
+
+        /* 3. FIXED POSITION FLOATING ACTION BUTTON */
+        .fixed-pickup-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #2d6a4f;
+            color: white;
+            padding: 15px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            z-index: 600;
+        }
+
+        /* 4. CENTERED RESPONSIVE QUADRANT LAYOUT (Relative + Absolute) */
+        .quadrant-wrapper {
+            position: relative;
+            width: 85%;
+            max-width: 900px;
+            height: 420px;
+            margin: 40px auto;
+            background: url('images/banner.jpeg') center/cover no-repeat;
+            background-color: #d8f3dc;
+            border: 3px solid #1b4332;
+            border-radius: 14px;
+            z-index: 10;
+        }
+
+        .quad-badge {
+            position: absolute;
+            background-color: rgba(27, 67, 50, 0.9);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .top-left { top: 15px; left: 15px; }
+        .top-right { top: 15px; right: 15px; }
+        .bottom-left { bottom: 15px; left: 15px; }
+        .bottom-right { bottom: 15px; right: 15px; }
+
+        .centered-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            color: #1b4332;
+            padding: 20px 35px;
+            border: 3px solid #40916c;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            z-index: 20;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* 5. STATIC & RELATIVE OFFSET DEMO */
+        .position-cards {
+            width: 85%;
+            max-width: 900px;
+            margin: 30px auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .static-box {
+            position: static;
+            background: #ffffff;
+            border: 2px solid #52b788;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .relative-box {
+            position: relative;
+            left: 30px;
+            background: #e8f5e9;
+            border: 2px dashed #1b4332;
+            padding: 15px;
+            border-radius: 8px;
+            opacity: 0.92;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Watermark -->
+    <div class="watermark">RECYCLOOP CERTIFIED</div>
+
+    <!-- Sticky Header -->
+    <div class="sticky-nav">
+        <strong>♻ RecycLoop Positioning Architecture</strong>
+        <a href="https://practicum2-iota.vercel.app/" style="color: #95d5b2; text-decoration: none;">Back to Home</a>
+    </div>
+
+    <!-- Centered Responsive Quadrant Layout -->
+    <div class="quadrant-wrapper">
+        <div class="quad-badge top-left">1. Collect (Doorstep)</div>
+        <div class="quad-badge top-right">2. Sort (AI Optical)</div>
+        <div class="centered-core">♻ RecycLoop Circular Core</div>
+        <div class="quad-badge bottom-left">3. Process (Pelletize)</div>
+        <div class="quad-badge bottom-right">4. Regenerate (B2B)</div>
+    </div>
+
+    <!-- Static vs Relative Demonstration -->
+    <div class="position-cards">
+        <div class="static-box">
+            <strong>position: static</strong> — Standard document flow for RecycLoop facility reports.
+        </div>
+        <div class="relative-box">
+            <strong>position: relative (left: 30px; opacity: 0.92)</strong> — Offset circular alert card shifted relative to its normal position.
+        </div>
+    </div>
+
+    <!-- Fixed Floating Button -->
+    <a href="#" class="fixed-pickup-btn">🚚 Instant Pickup</a>
+
+</body>
+</html>
